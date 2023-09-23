@@ -22,11 +22,6 @@ section {
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.513);
 }
 
-div {
-    text-align: center;
-    padding: 15px;
-}
-
 footer {
     text-align: center;
     font-style: italic;
