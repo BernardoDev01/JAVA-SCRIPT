@@ -12,7 +12,7 @@ function carregar() {
     }else if (hora >= 5 && hora < 12) {
         //bom dia
         img.src = 'imagens/amanhecer.png'
-        document.body.style.background = '#002834'
+        document.body.style.background = '#002834' //muda cor do fundo
     }else if (hora >= 12 && hora < 19) {
         //boa tarde
         img.src = 'imagens/entardecer.png'
