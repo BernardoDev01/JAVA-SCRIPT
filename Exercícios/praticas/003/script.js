@@ -1,50 +1,33 @@
-function verificar() {
-    var data = new Date()
-    var ano = data.getFullYear()
-    var fano = document.getElementById('txtano')
-    var res = document.querySelector('div#res')
-    //valor = 0                   //valor acima do ano atual
-    if (fano.value.length == 0 || fano.value > ano) {
-        window.alert('[ERRO] Verifique os dados e tente novamente!')
+function contar() {
+    let ini = document.getElementById('txti')
+    let fim = document.getElementById('txtf')
+    let passo = document.getElementById('txtp')
+    let res = document.getElementById('res')
+
+    if (ini.value.length == 0 || fim.value.length == 0 || passo.value.length == 0) {
+        //window.alert('[ERRO] Faltam dados!')
+        res.innerHTML = 'Impossivel contar!'
     } else {
-        var fsex = document.getElementsByName('radsex')
-        var idade = ano - Number(fano.value)
-        var genero = ''
-        var img = document.createElement('img') //colocar imagem com J.S.
-        img.setAttribute('id', 'foto')
-        if (fsex[0].checked) {
-            gênero = 'Homem'
-            if (idade >= 0 && idade < 12) {
-                //criança
-                img.setAttribute('src', 'imagens/fotomenino.png')
-           } else if (idade < 23) {
-               // jovem
-               img.setAttribute('src', 'imagens/fotogaroto.png')
-           } else if (idade < 60) {
-               //adulto
-               img.setAttribute('src', 'imagens/fotohomem.png')
-           } else {
-               //idoso
-               img.setAttribute('src', 'imagens/fotoidoso.png')
-           }
-        } else if (fsex[1].checked) {
-            gênero = 'Mulher'
-            if (idade >= 0 && idade < 12) {
-                //criança
-                img.setAttribute('src', 'imagens/fotomenina.png')
-           } else if (idade < 23) {
-               // jovem
-               img.setAttribute('src', 'imagens/fotogarota.png')
-           } else if (idade < 60) {
-               //adulto
-               img.setAttribute('src', 'imagens/fotomulher.png')
-           } else {
-               //idoso
-               img.setAttribute('src', 'imagens/fotoidosa.png')
-           }
+        res.innerHTML = 'Contando: <br>'
+        let i = Number(ini.value)
+        let f = Number(fim.value)
+        let p = Number(passo.value)
+        if (p <= 0) {
+            window.alert('Passo inválido! Considerando PASSO 1')
+            p = 1
         }
-        res.style.textAlign = 'center'
-        res.innerHTML = `Você é ${gênero} com ${idade} anos.`
-        res.appendChild(img)
+        if (i < f ) {
+            // contagem crescente
+            for(let c = i; c <= f; c += p) {
+                res.innerHTML += `${c} \u{1F605}` //adicionar emoji
+            }
+            res.innerHTML += `\u{1F618}`
+        } else {
+            // contagem regressivaaaaaaaaa
+            for(let c = i; c >= f; c -=p) {
+                res.innerHTML += `${c} \u{1F605}`
+            }
+            res.innerHTML += `\u{1F618}`
+        }
     }
 }
